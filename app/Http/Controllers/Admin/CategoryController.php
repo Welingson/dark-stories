@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\Category\StoreCategoriesRequest;
 use App\Http\Requests\Category\UpdateCategoriesRequest;
+use Inertia\Inertia;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Inertia::render('admin/categories', [
+            'categories' => Category::paginate(10)
+        ]);
     }
 
     /**

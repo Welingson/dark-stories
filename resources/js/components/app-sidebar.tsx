@@ -1,51 +1,61 @@
-import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Users2,FileText } from 'lucide-react';
+import { SharedData, type NavItem } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
+import { LayoutGrid, Users2, FileText, ListFilter } from 'lucide-react';
 import AppLogo from './app-logo';
 
-const mainNavItems: NavItem[] = [
+const appNavItems: NavItem[] = [
     {
         title: 'Painel',
-        href: '/dashboard',
+        href: '/app',
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Relatos',
+        href: '/app/relatos',
+        icon: FileText,
+    }
+]
+
+const adminNavItems: NavItem[] = [
+    {
+        title: 'Painel',
+        href: '/admin',
         icon: LayoutGrid,
     },
     {
         title: 'Usuários',
-        href: '/usuarios',
+        href: '/admin/usuarios',
         icon: Users2,
     },
     {
-        title: 'Postagens',
-        href: '/postagens',
+        title: 'Relatos',
+        href: '/admin/relatos',
         icon: FileText,
     },
+    {
+        title: 'Categorias',
+        href: '/admin/categorias',
+        icon: ListFilter,
+    }
 ];
 
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
-    },
-];
 
 export function AppSidebar() {
+
+    const { props } = usePage<SharedData>();
+
+
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch>
+                            <Link href="/admin" prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
@@ -54,11 +64,10 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain items={props.auth.user.role === 'admin' ? adminNavItems : appNavItems} />
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>

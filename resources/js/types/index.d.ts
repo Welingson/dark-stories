@@ -41,3 +41,38 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Category {
+    id: number;
+    name: string;
+    slug: string;
+    uuid: string;
+    description: string;
+    created_at: string;
+    updated_at: string;
+    [key: string]: unknown;
+}
+
+export interface PaginationLinks {
+    active: boolean;
+    label: string;
+    url: string | null;
+}
+
+export interface Pagination {
+    links: PaginationLinks[];
+    current_page: number;
+    first_page_url: string;
+    last_page_url: string;
+    from: number;
+    to: number;
+    path: string;
+    per_page: number;
+    prev_page_url: string | null;
+    last_page: number;
+    total: number;
+}
+
+export interface CategoryPaginated extends Pagination {
+    data: Category[];
+}
