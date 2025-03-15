@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\App;
 
-use App\Models\PostImage;
-use App\Http\Requests\Post\StorePostImageRequest;
-use App\Http\Requests\Post\UpdatePostImageRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Report;
+use App\Http\Requests\Report\StoreReportRequest;
+use App\Http\Requests\Report\UpdateReportRequest;
+use Inertia\Inertia;
 
-class PostImageController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return Inertia::render('app/reports', [
+            'reports' => Report::paginate(10)
+        ]);
     }
 
     /**
@@ -27,7 +31,7 @@ class PostImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostImageRequest $request)
+    public function store(StoreReportRequest $request)
     {
         //
     }
@@ -35,7 +39,7 @@ class PostImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PostImage $postImage)
+    public function show(Report $report)
     {
         //
     }
@@ -43,7 +47,7 @@ class PostImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PostImage $postImage)
+    public function edit(Report $report)
     {
         //
     }
@@ -51,7 +55,7 @@ class PostImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostImageRequest $request, PostImage $postImage)
+    public function update(UpdateReportRequest $request, Report $report)
     {
         //
     }
@@ -59,7 +63,7 @@ class PostImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PostImage $postImage)
+    public function destroy(Report $report)
     {
         //
     }

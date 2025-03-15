@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'role' => 'admin',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('$Weds36741298'),
             'remember_token' => Str::random(10),
         ]);
 
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('$Weds36741298'),
             'remember_token' => Str::random(10),
         ]);
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Post;
+namespace App\Http\Requests\Report;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePostImageRequest extends FormRequest
+class UpdateReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class UpdatePostImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
         ];
     }
 }

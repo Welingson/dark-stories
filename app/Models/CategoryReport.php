@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class CategoryPost extends Pivot
+class CategoryReport extends Pivot
 {
-    protected $table = 'category_post';
+    protected $table = 'category_report';
     protected $fillable = ['category_id', 'post_id'];
 }

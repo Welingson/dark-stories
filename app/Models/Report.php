@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Report extends Model
 {
-    protected $table = 'posts';
+    protected $table = 'reports';
     protected $fillable = ['uuid', 'title', 'slug', 'content', 'user_id', 'is_published', 'view_count'];
 }

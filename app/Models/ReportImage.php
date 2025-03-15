@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PostImage extends Model
+class ReportImage extends Model
 {
-    protected $table = 'post_images';
+    protected $table = 'report_images';
     protected $fillable = ['post_id', 'path', 'cover'];
 }
