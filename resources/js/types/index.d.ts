@@ -76,3 +76,7 @@ export interface Pagination {
 export interface CategoryPaginated extends Pagination {
     data: Category[];
 }
+
+export interface UserPaginated extends Pagination {
+    data: User[];
+}
