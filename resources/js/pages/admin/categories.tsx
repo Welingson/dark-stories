@@ -27,22 +27,22 @@ export default function Categories({ categories }: CategoriesProps) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Categorias" />
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead>ID</TableHead>
-                        <TableHead>Nome</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {categories.data.map((category) => (
-                        <TableRow key={category.id}>
-                            <TableCell>{category.id}</TableCell>
-                            <TableCell>{category.name}</TableCell>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>ID</TableHead>
+                            <TableHead>Nome</TableHead>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+                    </TableHeader>
+                    <TableBody>
+                        {categories.data.map((category) => (
+                            <TableRow key={category.id}>
+                                <TableCell>{category.id}</TableCell>
+                                <TableCell>{category.name}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
         </AppLayout>
     );
 }
