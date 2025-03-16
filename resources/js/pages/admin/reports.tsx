@@ -15,8 +15,6 @@ interface ReportsProps {
 }
 
 export default function Categories({ reports }: ReportsProps) {
-
-  console.log(reports);
   
   return (
     <AppLayout breadcrumbs={breadcrumbs}>

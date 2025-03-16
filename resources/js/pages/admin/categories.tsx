@@ -28,7 +28,6 @@ interface CategoriesProps {
 }
 
 export default function Categories({ categories }: CategoriesProps) {
-  console.log(categories);
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>

@@ -31,8 +31,7 @@ interface CategoryForm {
 }
 
 export default function EditCategory({ category }: CategoryProps) {
-    console.log(category.description);
-    
+
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm<Required<CategoryForm>>({
         name: category.name,
         description: category.description,
@@ -71,7 +70,7 @@ export default function EditCategory({ category }: CategoryProps) {
                 </div>
                 <div className="grid gap-1">
                     <Label htmlFor="name">Descrição</Label>
-                    
+
                     <Textarea
                         id="description"
                         className="mt-1 block w-full"
