@@ -42,6 +42,21 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
+export interface Report{
+    id: number;
+    uuid: string;
+    title: string;
+    slug: string;
+    content: string;
+    user_id: number;
+    is_published: boolean;
+    view_count: number;
+    created_at: string;
+    updated_at: string;
+    categories: Category[];
+    [key: string]: unknown;
+}
+
 export interface Category {
     id: number;
     name: string;
@@ -75,6 +90,10 @@ export interface Pagination {
 
 export interface CategoryPaginated extends Pagination {
     data: Category[];
+}
+
+export interface ReportPaginated extends Pagination {
+    data: Report[];
 }
 
 export interface UserPaginated extends Pagination {
