@@ -3,7 +3,7 @@
 use App\Http\Controllers\App\AppDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\ReportController;
-use App\Http\Controllers\App\CategoriesController;
+use App\Http\Controllers\App\CategoryController;
 
 Route::prefix('/app')->middleware(['auth', 'verified'])->group(function () {
     Route::redirect('/', '/app/painel');
@@ -17,6 +17,6 @@ Route::prefix('/app')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/relatos/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
     Route::put('/relatos/{report}', [ReportController::class, 'update'])->name('report.update');
 
-    Route::get('/categorias', [CategoriesController::class, 'index'])->name('categories.index');
+    Route::get('/categorias', [CategoryController::class, 'index'])->name('categories.index');
 
 });
