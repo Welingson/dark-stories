@@ -42,6 +42,21 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
+export interface Report{
+    id: number;
+    uuid: string;
+    title: string;
+    slug: string;
+    content: string;
+    user_id: number;
+    is_published: boolean;
+    view_count: number;
+    created_at: string;
+    updated_at: string;
+    categories: Category[];
+    [key: string]: unknown;
+}
+
 export interface Category {
     id: number;
     name: string;
@@ -56,7 +71,7 @@ export interface Category {
 export interface PaginationLinks {
     active: boolean;
     label: string;
-    url: string | null;
+    url: string;
 }
 
 export interface Pagination {
@@ -68,11 +83,20 @@ export interface Pagination {
     to: number;
     path: string;
     per_page: number;
-    prev_page_url: string | null;
+    prev_page_url: string;
+    next_page_url: string;
     last_page: number;
     total: number;
 }
 
 export interface CategoryPaginated extends Pagination {
     data: Category[];
+}
+
+export interface ReportPaginated extends Pagination {
+    data: Report[];
+}
+
+export interface UserPaginated extends Pagination {
+    data: User[];
 }

@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\AdminRoutesMiddleware;
 
-Route::prefix('admin')->middleware(['auth', AdminRoutesMiddleware::class])->group(function () {
+Route::prefix('admin')->middleware([AdminRoutesMiddleware::class])->group(function () {
     Route::redirect('/', '/admin/painel');
     Route::get('/painel', [DashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -17,10 +17,10 @@ Route::prefix('admin')->middleware(['auth', AdminRoutesMiddleware::class])->grou
     Route::put('/relatos/{report}', [ReportController::class, 'update'])->name('admin.reports.update');
     Route::delete('/relatos/{report}', [ReportController::class, 'destroy'])->name('admin.reports.destroy');
 
-    Route::get('/categorias', [CategoryController::class, 'index']);
-    Route::get('/categorias/{id}', [CategoryController::class, 'show'])->name('admin.categories.show');
+    Route::get('/categorias', [CategoryController::class, 'index'])->name('admin.categories.index');
+    Route::get('/categorias/{id}', [CategoryController::class, 'show'])->name('admin.categories.edit');
     Route::post('/categorias', [CategoryController::class, 'store'])->name('admin.categories.store');
-    Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::patch('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.users.index');

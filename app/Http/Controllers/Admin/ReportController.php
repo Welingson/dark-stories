@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Report;
 use App\Http\Requests\Report\StoreReportRequest;
 use App\Http\Requests\Report\UpdateReportRequest;
+use Inertia\Inertia;
 
 class ReportController extends Controller
 {
@@ -14,7 +15,9 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('admin/reports', [
+            'reports' => Report::with('categories')->paginate(10),
+        ]);
     }
 
     /**
