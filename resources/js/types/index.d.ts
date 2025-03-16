@@ -71,7 +71,7 @@ export interface Category {
 export interface PaginationLinks {
     active: boolean;
     label: string;
-    url: string | null;
+    url: string;
 }
 
 export interface Pagination {
@@ -83,7 +83,8 @@ export interface Pagination {
     to: number;
     path: string;
     per_page: number;
-    prev_page_url: string | null;
+    prev_page_url: string;
+    next_page_url: string;
     last_page: number;
     total: number;
 }
