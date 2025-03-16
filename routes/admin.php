@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Middleware\AdminRoutesMiddleware;
 
-Route::prefix('admin')->middleware(['auth', AdminRoutesMiddleware::class])->group(function () {
+Route::prefix('admin')->middleware([AdminRoutesMiddleware::class])->group(function () {
     Route::redirect('/', '/admin/painel');
     Route::get('/painel', [DashboardController::class, 'index'])->name('admin.dashboard');
 
