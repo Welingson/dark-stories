@@ -39,17 +39,33 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $categories)
-    {
-        //
+    public function show(string $id)
+    {   
+        $category = Category::find($id);
+
+        if (!$category) {
+            return redirect()->route('admin.categories.index');
+        }
+
+        return Inertia::render('admin/edit-category', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $categories)
+    public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return redirect()->route('admin.categories.index');
+        }
+
+        return Inertia::render('admin/edit-category', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -57,7 +73,18 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoriesRequest $request, Category $categories)
     {
-        //
+        $category = Category::find($request->id);
+
+        if (!$category) {
+            return redirect()->route('admin.categories.index');
+        }
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return redirect()->route('admin.categories.index');
+    
     }
 
     /**
